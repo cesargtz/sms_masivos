@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_sms_send_payment_purchase">
+    <field name="name">sms.send.payment.purchase</field>
+    <field name="model">account.payment</field>
+    <field name="inherit_id" ref="account.view_account_payment_invoice_form"/>
+     <field name="groups_id" eval="[(4, ref('access_sms_payment_purchase'))]"/>
+    <field name="arch" type="xml">
+       <field name="communication" position="after">
+           <field name="send_message"/>
+      </field>
+    </field>
+  </record>
+</odoo>
