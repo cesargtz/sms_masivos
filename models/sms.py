@@ -30,6 +30,9 @@ class sms_payents(models.Model):
                 'country_code':'+52'
             }
             r = requests.post(url = targetURL, data = data, headers = headers)
+            r = json.loads(r.text)
+            if r['success'] == False:
+                raise exceptions.ValidationError("Sucedio un error: %s " % (r['message']))
         return super(sms_payents, self).post()
                         
 
