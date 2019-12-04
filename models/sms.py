@@ -20,8 +20,6 @@ class sms_payents(models.Model):
             data = {'apikey':'bc258950888b605045cc1ee0340d48c538903715'}
             auth= requests.post(url = urlAuth, data = data)
             res_auth = json.loads(auth.text)
-            print(res_auth)
-    
             targetURL = "https://api.smsmasivos.com.mx/sms/send"
             headers = {
                 'token': res_auth['token']
@@ -32,7 +30,7 @@ class sms_payents(models.Model):
                 'country_code':'+52'
             }
             r = requests.post(url = targetURL, data = data, headers = headers)
-            print(r.text)
+        return super(sms_payents, self).post()
                         
 
     # @api.multi
